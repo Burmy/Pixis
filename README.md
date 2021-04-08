@@ -8,11 +8,11 @@ Please follow the instructions below and fill in the information requested when 
 
 ## Student Information
 
-|               | Information   |
-|:-------------:|:-------------:|
-| Student Name  | name-here     |
-| Student ID    | id-here       |
-| Student Email | email-here    |
+|               |      Information      |
+|:-------------:|:---------------------:|
+| Student Name  | Anmol Burmy           |
+| Student ID    | 921143454             |
+| Student Email | aburmy@mail.sfsu.edu  |
 
 
 
