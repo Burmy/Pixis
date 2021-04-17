@@ -1,8 +1,228 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+
+html, body {
+  margin: 0;
+  height: 100%;
 }
 
-a {
-  color: #00B7FF;
+*:focus {
+  outline: none;
+}
+
+body{
+  /* Font  */
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+
+  /* Coloring */
+  color: #0D2A47;
+  background: #d4d4d4b7;
+}
+
+/* Container for all Cards */
+.container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Home page */
+#home-container {
+  justify-content: center;
+  display: grid;
+  gap: 20px 20px;
+  justify-items: center;
+  grid-template-columns: repeat(3, 450px);
+  grid-template-rows: repeat(3, 550px);
+  grid-auto-columns: repeat(3, 450px);
+  grid-auto-rows: repeat(3, 550px);
+}
+
+#home-count {
+  text-align: center;
+  margin: 50px;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 25px;
+  box-shadow: 0 15px 16.83px 0.17px rgb(0 0 0 / 5%);
+}
+
+.home_posts{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px;
+  margin: 20px 5px 20px 5px;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.home_images{
+  border-radius: 10px;
+  box-shadow: 0 15px 16.83px 0.17px rgb(0 0 0 / 5%);
+  border: 1px solid #0000002a;
+  width:400px;
+  height:400px;
+}
+
+.home_titles{
+  border-radius: 10px;
+  list-style-type:none;
+  text-align: center;
+  width: 90%;
+  margin-top: 10px;
+}
+
+/* Login Page Card*/
+.login-card{
+  width: 450px;
+  background: #ffffff;
+  box-shadow: 0 15px 16.83px 0.17px rgb(0 0 0 / 5%);
+  border-radius: 13px;
+}
+
+/* Registration and Upload Page Card */
+.reg-upload-card{
+  width: 650px;
+  background: #ffffff;
+  box-shadow: 0 15px 16.83px 0.17px rgb(0 0 0 / 5%);
+  border-radius: 13px;
+}
+
+/* Image Post Page */
+.post-card{
+  width: 80%;
+  border-radius: 13px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+  background: #ffffff;
+  box-shadow: 0 15px 16.83px 0.17px rgb(0 0 0 / 5%);
+  border-radius: 13px
+  
+}
+
+.post-image{
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border: 2px solid #0d2a471c;
+  box-shadow: 0 15px 16.83px 0.17px rgb(0 0 0 / 5%);
+}
+
+/* Form */
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Heading */
+.heading{
+  font-size: 40px;
+}
+
+/* Links */
+a{
+  text-decoration: none;
+  color: #2d7dce;
+}
+
+/* Input */
+.input{
+  margin: 15px 0 15px 0;
+  line-height: 45px;
+  width: 70%;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+  background: #e5e5e5;
+  color: #0D2A47;
+  padding: 0 22px;
+}
+
+.input:hover {
+  background-color: #0d2a4736;
+}
+
+::placeholder { 
+  color: #0D2A47;
+  opacity: 0.8; 
+  font-size: 16px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/* Image Description Text Area */
+textarea {
+  resize: none;
+}
+
+textarea::placeholder {
+  font-size: 16px;
+  font-family: 'Josefin Sans', sans-serif;
+  padding-top: 3px;
+}
+
+/* Upload Image Button */
+input[type=file]::file-selector-button {
+  font-family: 'Josefin Sans', sans-serif;
+  border: 1px solid #0D2A47;
+  border-radius: 10px;
+  background-color: #0D2A47;
+  padding: 10px 15px 10px 15px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Submit button */
+.button {
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 10%);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  padding: 10px 35px 8px 35px;
+  border: 2.5px solid #0D2A47;
+  border-radius: 8px;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 45px;
+  
+  /* btn font */
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+}
+
+.button:hover {
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 10%);
+  color: #ffffff;
+  background-color: #0D2A47;
+  border: 2.5px solid #0D2A47;
+  transform: scale(1.08);
+}
+
+.upload{
+  margin: 20px;
+  width: 80%;
+  text-align: center;
+}
+
+/* Validation */
+.check{
+  width: 70%;
+  text-align: center;
+}
+
+.age, .policy{
+  padding-top: 15px;
+}
+
+.error{
+  width: 70%;
+  text-align: left;
+  font-size: 16px;
+  padding: 3px;
+  line-height: 20px;
+  display: none;
 }
