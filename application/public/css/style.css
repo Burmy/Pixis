@@ -22,12 +22,9 @@ body{
 
 /* Container for all Cards */
 .container{
-  height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow-y:visible;
+  overflow-y: visible;
 }
 
 
