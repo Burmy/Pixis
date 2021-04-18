@@ -12,14 +12,14 @@
 
 <body>
     <div class="register-page">
+        <div class="logo"></div>
         <div class="container">
+
             <div class="reg-upload-card">
 
                 <form id="form">
 
-                    <h2 class="heading">
-                        Registration
-                    </h2>
+                    <h2 class="heading">Sign Up</h2>
 
                     <input id="uname" class="input" type="text" name="uname" placeholder="Username">
                     <div id="uname_error" class="error"></div>
@@ -48,7 +48,11 @@
                     </div>
 
                     <input class="button" type="submit" value="Submit" onclick="return validation()">
-
+                    <p> Already a member? Log in
+                        <a href="/login">
+                            here.
+                        </a>
+                    </p>
                 </form>
 
             </div>
