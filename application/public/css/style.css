@@ -3,7 +3,7 @@
 
 html, body {
   margin: 0;
-  height: 130%;
+  height: 110%;
 }
 
 *:focus {
@@ -18,6 +18,7 @@ body{
   /* Coloring */
   color: #0D2A47;
   background: #d4d4d4b7;
+
 }
 
 /* Container for all Cards */
@@ -25,6 +26,7 @@ body{
   display: flex;
   justify-content: center;
   overflow-y: visible;
+  padding-top: 100px;
 }
 
 
@@ -35,12 +37,12 @@ body{
   height: 100%;
 }
 
-.logo{
+/* .logo{
   background: url(/public/images/logo.svg);
   background-size: 100% 100%;
   height:50px;
   width: 50px;
-}
+} */
 
 .main-page-content{
   color: #ffffff;
@@ -229,7 +231,7 @@ input[type=file]::file-selector-button {
   border-radius: 8px;
   background-color: transparent;
   cursor: pointer;
-  margin: 45px;
+  /* margin: 45px; */
   
   /* btn font */
   font-family: 'Josefin Sans', sans-serif;
@@ -267,4 +269,100 @@ input[type=file]::file-selector-button {
   padding: 3px;
   line-height: 20px;
   display: none;
+}
+
+.navbar {
+  font-size: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
+  z-index: 2;
+  background-color:rgb(255, 255, 255) ;
+}
+
+.main-nav {
+  list-style-type: none;
+  display: none;
+  width: 20%;
+}
+
+.brand{
+  display: flex;
+  flex-direction: row;
+}
+
+.logo {
+  display: inline-block;
+  background: url(/public/images/logo.svg);
+  background-size: 100% 100%;
+  height:70px;
+  width: 70px;
+  margin: 0px 15px 0px 15px;
+  vertical-align: top;
+}
+
+.navbar-toggle {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 24px;
+}
+
+.active {
+  display: block;
+}
+
+@media screen and (min-width: 600px) {
+  .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 0;
+      align-items: center;
+  }
+
+  .main-nav {
+      display: flex;
+      margin-right: 30px;
+      flex-direction: row;
+      justify-content: flex-end;
+      padding: 0;
+  }
+
+  .main-nav li {
+      margin: 0;
+  }
+
+  .navbar-toggle {
+      display: none;
+  }
+
+}
+
+.search {
+  position: relative;
+  display: flex;
+  margin: 0 15px 0 15px;
+  width: 90%;
+  justify-content: center;
+}
+
+.searchButton {
+  border: 1px solid #000000;
+  background: #000000;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 15px 0 15px 0;
+  width: 50px;
+}
+
+.footer{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  background: rgb(255, 255, 255);
 }
