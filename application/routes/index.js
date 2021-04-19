@@ -3,27 +3,27 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('main');
+  res.render('main', { title: "Welcome to Pixis!" });
 });
 
 router.get('/login', function (req, res, next) {
-  res.render('login');
+  res.render('login', { title: "Login" });
 });
 
 router.get('/register', function (req, res, next) {
-  res.render('register');
+  res.render('register', { title: "Join Us!" });
 });
 
 router.get('/imagepost', function (req, res, next) {
-  res.render('imagepost');
+  res.render('imagepost', { title: "Your Post" });
 });
 
 router.get('/postimage', function (req, res, next) {
-  res.render('postimage');
+  res.render('postimage', { title: "Post your Image" });
 });
 
 router.get('/home', function (req, res, next) {
-  res.render('home');
+  res.render('home', { title: "See Whats Happening" });
 });
 
 

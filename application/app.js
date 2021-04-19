@@ -6,6 +6,8 @@ var handlebars = require('express-handlebars')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var errorPrint = require('./helpers/debug/debugprinters').errorPrint;
+var requestPrint = require('./helpers/debug/debugprinters').requestPrint;
 
 var app = express();
 
@@ -31,7 +33,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use("/public", express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+    requestPrint(req.url);
+    next();
+})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+app.use((err, req, res, next) => {
+    console.log(err)
+    errorPrint(err);
+    res.render("error", { err_message: err })
+
+});
 
 module.exports = app;

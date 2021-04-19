@@ -1,48 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="container">
+    <div class="reg-upload-card">
+        <form>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="public/css/style.css">
-    <title>Post Image</title>
-</head>
+            <h2 class="heading">Post Images</h2>
 
-<body>
+            <label for="title">Title</label>
+            <input class="input" type="text" name="title" placeholder="..." required>
 
-    <div class="container">
-        <div class="reg-upload-card">
-            <form>
+            <label for="desc">Description</label>
+            <textarea class=input style="height: 130px; " name="desc" placeholder="..."></textarea>
 
-                <h2 class="heading">
-                    Post Images
-                </h2>
+            <div class="upload">
+                <label for="upload">Upload your Image or Images:</label>
+                <input type="file" name="uploaded" required multiple>
+            </div>
 
-                <label for="title">Title</label>
-                <input class="input" type="text" name="title" placeholder="..." required>
+            <div class="check">
+                <input type="checkbox" name="confirmPolicy" required>
+                <label for="img-policy">I have read and accept the</label>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Acceptable Use Policy for
+                    uploading images.</a>
+            </div>
 
-                <label for="desc">Description</label>
-                <textarea class=input style="height: 130px; " name="desc" placeholder="..."></textarea>
+            <input class="button" type="submit" value="Submit">
 
-                <div class="upload">
-                    <label for="upload">Upload your Image or Images:</label>
-                    <input type="file" name="uploaded" required multiple>
-                </div>
-
-                <div class="check">
-                    <input type="checkbox" name="confirmPolicy" required>
-                    <label for="img-policy">I have read and accept the</label>
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Acceptable Use Policy for
-                        uploading images.</a>
-                </div>
-
-                <input class="button" type="submit" value="Submit">
-
-            </form>
-        </div>
+        </form>
     </div>
-
-</body>
-
-</html>
+</div>
