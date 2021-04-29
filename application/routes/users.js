@@ -3,6 +3,8 @@ var router = express.Router();
 var db = require('../config/database');
 const { successPrint, errorPrint } = require('../helpers/debug/debugprinters');
 var bcrypt = require('bcrypt');
+const UserError = require('../helpers/error/UserError');
+
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -83,11 +85,13 @@ router.post('/login', (req, res, next) => {
   // 
   //   
 
-  let baseSQL = "SELECT username, password FROM users WHERE username=?;";
+  let baseSQL = "SELECT id, username, password FROM users WHERE username=?;";
+  let userID;
   db.execute(baseSQL, [username])
     .then(([results, fields]) => {
       if (results && results.length == 1) {
         let hashedPassword = results[0].password;
+        userID = results[0].id;
         return bcrypt.compare(password, hashedPassword)
       } else {
         throw new UserError(
@@ -100,8 +104,10 @@ router.post('/login', (req, res, next) => {
     .then((passwordsMatched) => {
       if (passwordsMatched) {
         successPrint(`User ${username} is logged in`);
+        req.session.username = username;
+        req.session.userID = userID;
         res.locals.logged = true;
-        res.render('index');
+        res.redirect('/');
       } else {
         throw new UserError(
           "Invalid username and/or password!",
@@ -122,6 +128,18 @@ router.post('/login', (req, res, next) => {
     })
 });
 
+router.post('/logout', (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) {
+      errorPrint('session could not be destroyed');
+      next(err);
+    } else {
+      successPrint('Session was destroyed');
+      res.clearCookie('csid')
+      res.json({ status: "OK", message: "user is logged out" })
+    }
+  })
+})
 
 module.exports = router;
 
