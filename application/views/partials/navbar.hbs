@@ -17,12 +17,18 @@
     </div>
 
     <ul class="main-nav" id="js-menu">
+        {{#if logged}}
+        <li>
+            <a href="/users/logout" class="button">Logout</a>
+        </li>
+        {{else}}
         <li>
             <a href="/login" class="button">Login</a>
         </li>
         <li>
             <a href="/register" class="button">Join Us</a>
         </li>
+        {{/if}}
     </ul>
 
 </nav>

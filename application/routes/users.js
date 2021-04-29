@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../config/database');
 const { successPrint, errorPrint } = require('../helpers/debug/debugprinters');
+var bcrypt = require('bcrypt');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -19,18 +20,6 @@ router.post('/register', (req, res, next) => {
   // DO VALIDATION----------------------------------------------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   // 
   //   
-  // let baseSQL = 'INSERT INTO users (username, email, password, created) VALUES (?, ?, ?, now())';
-  // db.query(baseSQL, [username, email, password])
-  //   .then(([results, fields]) => {
-  //     if (results && results.affectedRows) {
-  //       res.send('user was made')
-  //     } else {
-  //       res.send('user was not made')
-  //     }
-  //   })
-  //   .catch((err) => {
-  //     next(err);
-  //   });
 
   db.execute("SELECT * FROM users WHERE username=?", [username])
     .then(([results, fields]) => {
@@ -46,8 +35,7 @@ router.post('/register', (req, res, next) => {
     })
     .then(([results, fields]) => {
       if (results && results.length == 0) {
-        let baseSQL = 'INSERT INTO users (username, email, password, created) VALUES (?, ?, ?, now());'
-        return db.execute(baseSQL, [username, email, password])
+        return bcrypt.hash(password, 15);
       } else {
         throw new UserError(
           "Regstration Failed: Email already Exists",
@@ -56,7 +44,12 @@ router.post('/register', (req, res, next) => {
         )
       }
     })
+    .then((hashedPassword) => {
 
+      let baseSQL = 'INSERT INTO users (username, email, password, created) VALUES (?, ?, ?, now());'
+      return db.execute(baseSQL, [username, email, hashedPassword])
+
+    })
     .then(([results, fields]) => {
       if (results && results.affectedRows) {
         successPrint("User.js --> User was created")
@@ -72,7 +65,7 @@ router.post('/register', (req, res, next) => {
     .catch((err) => {
       errorPrint("user could not be made", err);
       if (err instanceof UserError) {
-        errorPrint(err.getMessafe());
+        errorPrint(err.getMessage());
         res.status(err.getStatus());
         res.redirect(err.getRedirectURL());
       } else {
@@ -80,6 +73,55 @@ router.post('/register', (req, res, next) => {
       }
     });
 });
+
+router.post('/login', (req, res, next) => {
+  let username = req.body.username;
+  let password = req.body.password;
+
+  //   
+  // DO VALIDATION----------------------------------------------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  // 
+  //   
+
+  let baseSQL = "SELECT username, password FROM users WHERE username=?;";
+  db.execute(baseSQL, [username])
+    .then(([results, fields]) => {
+      if (results && results.length == 1) {
+        let hashedPassword = results[0].password;
+        return bcrypt.compare(password, hashedPassword)
+      } else {
+        throw new UserError(
+          "invalid username and/or password!",
+          "/login",
+          200
+        );
+      }
+    })
+    .then((passwordsMatched) => {
+      if (passwordsMatched) {
+        successPrint(`User ${username} is logged in`);
+        res.locals.logged = true;
+        res.render('index');
+      } else {
+        throw new UserError(
+          "Invalid username and/or password!",
+          "/login",
+          200
+        );
+      }
+    })
+    .catch((err) => {
+      errorPrint("user login failed", err);
+      if (err instanceof UserError) {
+        errorPrint(err.getMessage());
+        res.status(err.getStatus());
+        res.redirect("/login");
+      } else {
+        next(err);
+      }
+    })
+});
+
 
 module.exports = router;
 
@@ -95,3 +137,4 @@ module.exports = router;
   //   .catch((err) => {
   //     next(err);
   //   });
+
