@@ -43,3 +43,22 @@ let navBarToggle = document.getElementById('js-navbar-toggle');
 navBarToggle.addEventListener('click', function () {
     mainNav.classList.toggle('active');
 });
+
+function setFlashMsgFadeOut() {
+    setTimeout(() => {
+        let currentOpacity = 1.0;
+        let timer = setInterval(() => {
+            if (currentOpacity < 0.5) {
+                clearInterval(timer);
+                flashElement.remove();
+            }
+            currentOpacity = currentOpacity - 0.5;
+            flashElement.style.opacity = currentOpacity;
+        }, 50)
+    }, 4000)
+}
+
+let flashElement = document.getElementById('flash-msg');
+if (flashElement) {
+    setFlashMsgFadeOut();
+}

@@ -5,6 +5,7 @@ var logger = require('morgan');
 var handlebars = require('express-handlebars')
 var sessions = require('express-session')
 var mysqlSession = require('express-mysql-session')(sessions);
+var flash = require('express-flash')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -22,8 +23,8 @@ app.engine(
         extname: ".hbs",
         defaultLayout: "app",
         helpers: {
-            renderLink: () => {
-
+            emptyObject: (obj) => {
+                return !(obj.constructor === Object && Object.keys(obj).length == 0);
             }
         }
     })
@@ -39,6 +40,7 @@ app.use(sessions({
     saveUninitialized: false
 }))
 
+app.use(flash());
 app.set("view engine", "hbs");
 app.use(logger('dev'));
 app.use(express.json());
@@ -52,6 +54,7 @@ app.use((req, res, next) => {
 })
 
 app.use((req, res, next) => {
+    console.log(req.session);
     if (req.session.username) {
         res.locals.logged = true;
     }

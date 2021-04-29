@@ -16,6 +16,9 @@
 
 <body>
     {{> navbar}}
+    {{#if (emptyObject messages)}}
+    {{> flashmsg}}
+    {{/if}}
     {{{body}}}
     {{> footer}}
 
