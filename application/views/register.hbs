@@ -1,4 +1,13 @@
 <div class="register-page">
+
+    <div id="flash-msg">
+        {{# if errors }}
+        {{# each errors }}
+        <p class="error-msg">{{ this.msg }}</p>
+        {{/each}}
+        {{/if}}
+    </div>
+
     <div class="container">
 
         <div class="reg-upload-card">

@@ -4,18 +4,21 @@ var db = require('../config/database');
 const { successPrint, errorPrint } = require('../helpers/debug/debugprinters');
 var bcrypt = require('bcrypt');
 const UserError = require('../helpers/error/UserError');
+const { check, validationResult } = require('express-validator');
+
+
+const signupController = (req, res) => {
+  // add the user to the database
+  return res.status(200).json({ msg: "success" });
+};
 
 router.post('/register', (req, res, next) => {
   console.log(req.body);
   let username = req.body.username;
   let email = req.body.email;
   let password = req.body.password;
-  let cpassword = req.body.password;
+  let cpassword = req.body.cpassword;
 
-  //   
-  // DO VALIDATION----------------------------------------------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  // 
-  //   
 
   db.execute("SELECT * FROM users WHERE username=?", [username])
     .then(([results, fields]) => {
@@ -76,11 +79,6 @@ router.post('/login', (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
 
-  //   
-  // DO VALIDATION----------------------------------------------------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  // 
-  //   
-
   let baseSQL = "SELECT id, username, password FROM users WHERE username=?;";
   let userID;
   db.execute(baseSQL, [username])
@@ -91,7 +89,7 @@ router.post('/login', (req, res, next) => {
         return bcrypt.compare(password, hashedPassword)
       } else {
         throw new UserError(
-          "invalid username and/or password!",
+          "Invalid username and/or password!",
           "/login",
           200
         );
@@ -107,7 +105,7 @@ router.post('/login', (req, res, next) => {
         res.redirect('/');
       } else {
         throw new UserError(
-          "Invalid username and/or password!",
+          "invalid username and/or password!",
           "/login",
           200
         );
@@ -141,16 +139,4 @@ router.post('/logout', (req, res, next) => {
 
 module.exports = router;
 
-  // let baseSQL = 'INSERT INTO users (username, email, password, created) VALUES (?, ?, ?, now())';
-  // db.query(baseSQL, [username, email, password])
-  //   .then(([results, fields]) => {
-  //     if (results && results.affectedRows) {
-  //       res.send('user was made')
-  //     } else {
-  //       res.send('user was not made')
-  //     }
-  //   })
-  //   .catch((err) => {
-  //     next(err);
-  //   });
 

@@ -6,6 +6,7 @@ var handlebars = require('express-handlebars')
 var sessions = require('express-session')
 var mysqlSession = require('express-mysql-session')(sessions);
 var flash = require('express-flash')
+// var validator = require('express-validator')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -39,6 +40,7 @@ app.use(sessions({
     resave: false,
     saveUninitialized: false
 }))
+
 
 app.use(flash());
 app.set("view engine", "hbs");

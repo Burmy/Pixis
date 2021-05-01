@@ -380,11 +380,24 @@ input[type=file]::file-selector-button {
 #flash-msg{
   position: fixed;
   left: 50%;
-  top: 15%;
-  z-index: 2;
+  top: 150px;
+  z-index: 1;
   transform: translate(-50%,0);
 }
 
 #flash-msg div{
   text-align: center;
+  border-radius: 8px;
+  padding: 18px;
+
+  color: #fff;
+  font-size: 21px;
+}
+
+.error-msg{
+  background-color: #ec5f38;
+}
+
+.success-msg{
+  background-color: #38ec50;
 }
