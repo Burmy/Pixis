@@ -111,7 +111,7 @@ router.post('/login', [
 
   check('password')
     .trim()
-    .isLength({ min: 8 })
+    // .isLength({ min: 8 })
     .matches(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[(/*-+!@#$^&*)])/g)
     .withMessage(" Invalid password!"),
 
