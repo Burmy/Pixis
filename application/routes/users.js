@@ -6,19 +6,46 @@ var bcrypt = require('bcrypt');
 const UserError = require('../helpers/error/UserError');
 const { check, validationResult } = require('express-validator');
 
+router.post('/register', [
 
-const signupController = (req, res) => {
-  // add the user to the database
-  return res.status(200).json({ msg: "success" });
-};
+  check('username')
+    .trim()
+    .isLength({ min: 3 })
+    .withMessage(" Username must be at least 3 alphanumeric characters"),
 
-router.post('/register', (req, res, next) => {
+  check('email')
+    .trim()
+    .isEmail()
+    .withMessage("invalid email address"),
+
+  check('password')
+    .trim()
+    .isLength({ min: 8 })
+    .withMessage(" Password must be 8 characters long")
+    .matches(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[(/*-+!@#$^&*)])/g)
+    .withMessage(" Password must contain at least 1 upper case letter and 1 number and 1 of the following special characters ( / * - + ! @ # $ ^ & * )."),
+
+  check("cpassword").custom((value, { req }) => {
+    if (value !== req.body.password) {
+      throw new Error("Passwords must be identical.");
+    }
+    return true;
+  }),
+], (req, res, next) => {
+
+  const errors = validationResult(req)
+
+  if (!errors.isEmpty()) {
+    errors.array().forEach(error => {
+      req.flash('error', error.msg)
+    })
+    return res.redirect('/register');
+  }
+
   console.log(req.body);
   let username = req.body.username;
   let email = req.body.email;
   let password = req.body.password;
-  let cpassword = req.body.cpassword;
-
 
   db.execute("SELECT * FROM users WHERE username=?", [username])
     .then(([results, fields]) => {
@@ -75,7 +102,30 @@ router.post('/register', (req, res, next) => {
     });
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/login', [
+
+  check('username')
+    .trim()
+    .isLength({ min: 3 })
+    .withMessage(" Invalid Username!"),
+
+  check('password')
+    .trim()
+    .isLength({ min: 8 })
+    .matches(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[(/*-+!@#$^&*)])/g)
+    .withMessage(" Invalid password!"),
+
+], (req, res, next) => {
+
+  const errors = validationResult(req)
+
+  if (!errors.isEmpty()) {
+    errors.array().forEach(error => {
+      req.flash('error', error.msg)
+    })
+    return res.redirect('/login');
+  }
+
   let username = req.body.username;
   let password = req.body.password;
 

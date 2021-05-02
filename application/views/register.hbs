@@ -1,13 +1,4 @@
 <div class="register-page">
-
-    <div id="flash-msg">
-        {{# if errors }}
-        {{# each errors }}
-        <p class="error-msg">{{ this.msg }}</p>
-        {{/each}}
-        {{/if}}
-    </div>
-
     <div class="container">
 
         <div class="reg-upload-card">
@@ -20,13 +11,13 @@
                 <div id="uname_error" class="error"></div>
                 <div id="uname_char_error" class="error"></div>
 
-                <input class="input" type="email" name="email" placeholder="Email" required>
+                <input id="email" class="input" type="email" name="email" placeholder="Email" required>
 
-                <input id="pwd" class="input" type="password" name="password" placeholder="Password" required>
+                <input id="pwd" class="input" type="text" name="password" placeholder="Password" required>
                 <div id="pwd_error" class="error"></div>
                 <div id="pwd_char_error" class="error"></div>
 
-                <input id="c_pwd" class="input" type="password" name="c_pwd" placeholder="Confirm Password" required>
+                <input id="c_pwd" class="input" type="text" name="cpassword" placeholder="Confirm Password" required>
                 <div id="c_pwd_error" class="error"></div>
 
                 <div class="check">

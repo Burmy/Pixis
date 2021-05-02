@@ -389,15 +389,15 @@ input[type=file]::file-selector-button {
   text-align: center;
   border-radius: 8px;
   padding: 18px;
-
   color: #fff;
   font-size: 21px;
-}
 
+}
+hr{ clear:both; }
 .error-msg{
-  background-color: #ec5f38;
+  background-color: #fc7955;
 }
 
 .success-msg{
-  background-color: #38ec50;
+  background-color: #6cd17a;
 }
