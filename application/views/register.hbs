@@ -3,21 +3,22 @@
 
         <div class="reg-upload-card">
 
-            <form id="form">
+            <form id="form" method="POST" action="/users/register" enctype="application/x-www-form-urlencoded">
 
                 <h2 class="heading">Sign Up</h2>
 
-                <input id="uname" class="input" type="text" name="uname" placeholder="Username">
+                <input id="uname" class="input" type="text" name="username" placeholder="Username" required>
                 <div id="uname_error" class="error"></div>
                 <div id="uname_char_error" class="error"></div>
 
-                <input class="input" type="email" name="mail" placeholder="Email">
+                <input id="email" class="input" type="email" name="email" placeholder="Email" required>
 
-                <input id="pwd" class="input" type="password" name="pwd" placeholder="Password">
+                <input id="pwd" class="input" type="password" name="password" placeholder="Password" required>
                 <div id="pwd_error" class="error"></div>
                 <div id="pwd_char_error" class="error"></div>
 
-                <input id="c_pwd" class="input" type="password" name="c_pwd" placeholder="Confirm Password">
+                <input id="c_pwd" class="input" type="password" name="cpassword" placeholder="Confirm Password"
+                    required>
                 <div id="c_pwd_error" class="error"></div>
 
                 <div class="check">
