@@ -393,7 +393,7 @@ input[type=file]::file-selector-button {
   font-size: 21px;
 
 }
-hr{ clear:both; }
+
 .error-msg{
   background-color: #fc7955;
 }
