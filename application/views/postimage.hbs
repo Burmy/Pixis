@@ -1,6 +1,6 @@
 <div class="container">
     <div class="reg-upload-card">
-        <form>
+        <form method="POST" action="/posts/createPost" enctype="multipart/form-data">
 
             <h2 class="heading">Post Images</h2>
 
@@ -8,11 +8,11 @@
             <input class="input" type="text" name="title" placeholder="..." required>
 
             <label for="desc">Description</label>
-            <textarea class=input style="height: 130px; " name="desc" placeholder="..."></textarea>
+            <textarea class=input style="height: 130px; " name="description" placeholder="..."></textarea>
 
             <div class="upload">
                 <label for="upload">Upload your Image or Images:</label>
-                <input type="file" name="uploaded" required multiple>
+                <input type="file" name="uploadImage" required multiple>
             </div>
 
             <div class="check">
