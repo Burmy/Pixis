@@ -6,6 +6,7 @@ var sharp = require('sharp');
 var multer = require('multer');
 var crypto = require('crypto');
 const PostError = require('../helpers/error/PostError');
+const { check, validationResult } = require('express-validator');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -18,11 +19,63 @@ var storage = multer.diskStorage({
     }
 })
 
-var uploader = multer({ storage: storage })
+var uploader = multer({ storage: storage });
 
 router.post('/createPost', uploader.single("uploadImage"), (req, res, next) => {
-    console.log(req);
-    res.send('');
+
+    let fileUploaded = req.file.path;
+    let fileAsThumbnail = `thumbnail-${req.file.filename}`;
+    let destinationOfThumbnail = req.file.destination + "/" + fileAsThumbnail;
+    let title = req.body.title;
+    let description = req.body.description;
+    let fk_userId = req.body.userId;
+
+    sharp(fileUploaded)
+        .resize(200)
+        .toFile(destinationOfThumbnail)
+        .then(() => {
+            let baseSQL = 'INSERT INTO posts (title, description, photopath, thumbnail, created, fk_userid) VALUES (?,?,?,?,now(),?);';
+            return db.execute(baseSQL, [title, description, fileUploaded, destinationOfThumbnail, fk_userId]);
+        })
+        .then(([results, fields]) => {
+            if (results && results.affectedRows) {
+                req.flash('success', 'Your post was created seccessfully!');
+                res.redirect('/');
+            } else {
+                throw new PostError('Post could not be created!', '/postImage', 200);
+            }
+        })
+        .catch((err) => {
+            if (err instanceof PostError) {
+                errorPrint(err.getMessage());
+                req.flash('error', err.getMessage())
+                res.status(err.getStatus());
+                res.redirect(err.getRedirectURL());
+            } else {
+                next(err);
+            }
+        })
 })
 
 module.exports = router;
+
+
+    // [
+
+    //     check('title')
+    //         .isLength({ min: 1 })
+    //         .withMessage(" Post title must not be empty"),
+
+    //     check('description')
+    //         .isLength({ min: 1 })
+    //         .withMessage(" Provide your post with a description"),
+
+    // ],
+    // const errors = validationResult(req);
+
+    // if (!errors.isEmpty()) {
+    //     errors.array().forEach(error => {
+    //         req.flash('error', error.msg)
+    //     })
+    //     return res.redirect('/postimage');
+    // }
