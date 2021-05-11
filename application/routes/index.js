@@ -19,7 +19,7 @@ router.get('/imagepost', function (req, res, next) {
   res.render('imagepost', { title: "Your Post" });
 });
 
-router.use('/postimage', isLoggedIn)
+router.use('/postimage', isLoggedIn);
 router.get('/postimage', function (req, res, next) {
   res.render('postimage', { title: "Post your Image" });
 });

@@ -6,7 +6,7 @@ var sharp = require('sharp');
 var multer = require('multer');
 var crypto = require('crypto');
 const PostError = require('../helpers/error/PostError');
-const { check, validationResult } = require('express-validator');
+// const { check, validationResult } = require('express-validator');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -14,8 +14,8 @@ var storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         let fileExt = file.mimetype.split('/')[1];
-        let randomName = crypto.randomBytes(22).toString('hex');
-        cb(null, `${randomName}.${fileExt}`)
+        let randomName = crypto.randomBytes(22).toString("hex");
+        cb(null, `${randomName}.${fileExt}`);
     }
 })
 
@@ -23,26 +23,30 @@ var uploader = multer({ storage: storage });
 
 router.post('/createPost', uploader.single("uploadImage"), (req, res, next) => {
 
+
+
     let fileUploaded = req.file.path;
     let fileAsThumbnail = `thumbnail-${req.file.filename}`;
     let destinationOfThumbnail = req.file.destination + "/" + fileAsThumbnail;
     let title = req.body.title;
     let description = req.body.description;
-    let fk_userId = req.body.userId;
+    let fk_userId = req.session.userID;
+
+    console.log(fk_userId)
 
     sharp(fileUploaded)
         .resize(200)
         .toFile(destinationOfThumbnail)
         .then(() => {
-            let baseSQL = 'INSERT INTO posts (title, description, photopath, thumbnail, created, fk_userid) VALUES (?,?,?,?,now(),?);';
+            let baseSQL = 'INSERT INTO posts (title, description, photopath, thumbnail, created, fk_userid) VALUE (?,?,?,?,now(),?);;';
             return db.execute(baseSQL, [title, description, fileUploaded, destinationOfThumbnail, fk_userId]);
         })
         .then(([results, fields]) => {
             if (results && results.affectedRows) {
-                req.flash('success', 'Your post was created seccessfully!');
+                req.flash('success', 'Your post was created successfully!');
                 res.redirect('/');
             } else {
-                throw new PostError('Post could not be created!', '/postImage', 200);
+                throw new PostError('Post could not be created!', '/postimage', 200);
             }
         })
         .catch((err) => {
