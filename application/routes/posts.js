@@ -30,16 +30,16 @@ router.post('/createPost', uploader.single("uploadImage"), (req, res, next) => {
     let destinationOfThumbnail = req.file.destination + "/" + fileAsThumbnail;
     let title = req.body.title;
     let description = req.body.description;
-    let fk_userId = req.session.userID;
+    let fk_userID = req.session.userID;
 
-    console.log(fk_userId)
+    console.log(fk_userID)
 
     sharp(fileUploaded)
         .resize(200)
         .toFile(destinationOfThumbnail)
         .then(() => {
             let baseSQL = 'INSERT INTO posts (title, description, photopath, thumbnail, created, fk_userid) VALUE (?,?,?,?,now(),?);;';
-            return db.execute(baseSQL, [title, description, fileUploaded, destinationOfThumbnail, fk_userId]);
+            return db.execute(baseSQL, [title, description, fileUploaded, destinationOfThumbnail, fk_userID]);
         })
         .then(([results, fields]) => {
             if (results && results.affectedRows) {
