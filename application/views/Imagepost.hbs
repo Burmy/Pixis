@@ -3,11 +3,12 @@
 
         <h2 class="heading">Posts</h2>
 
-        <h3>Title</h3>
+        <h3>{{currentPost.title}}</h3>
 
-        <img class="post-image" src="https://i.redd.it/w1h0xarzzsn61.jpg" alt="Image">
+        <img class="post-image" src="/{{currentPost.photopath}}" alt="Image">
 
-        <h5>Uploaded by [--Author--] at [--upload time--].</h5>
+        <h5>Uploaded by {{currentPost.username}} at {{currentPost.created}}.</h5>
+        {{currentPost.description}}
 
     </div>
 </div>
