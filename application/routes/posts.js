@@ -6,7 +6,7 @@ var sharp = require('sharp');
 var multer = require('multer');
 var crypto = require('crypto');
 const PostError = require('../helpers/error/PostError');
-// const { check, validationResult } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -21,9 +21,26 @@ var storage = multer.diskStorage({
 
 var uploader = multer({ storage: storage });
 
-router.post('/createPost', uploader.single("uploadImage"), (req, res, next) => {
+router.post('/createPost', uploader.single("uploadImage"), [
 
+    check('title')
+        .not().isEmpty()
+        .withMessage(" Post title must not be empty"),
 
+    check('description')
+        .not().isEmpty()
+        .withMessage(" Provide your post with a description"),
+
+], (req, res, next) => {
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        errors.array().forEach(error => {
+            req.flash('error', error.msg)
+        })
+        return res.redirect('/postimage');
+    }
 
     let fileUploaded = req.file.path;
     let fileAsThumbnail = `thumbnail-${req.file.filename}`;
@@ -64,22 +81,4 @@ router.post('/createPost', uploader.single("uploadImage"), (req, res, next) => {
 module.exports = router;
 
 
-    // [
 
-    //     check('title')
-    //         .isLength({ min: 1 })
-    //         .withMessage(" Post title must not be empty"),
-
-    //     check('description')
-    //         .isLength({ min: 1 })
-    //         .withMessage(" Provide your post with a description"),
-
-    // ],
-    // const errors = validationResult(req);
-
-    // if (!errors.isEmpty()) {
-    //     errors.array().forEach(error => {
-    //         req.flash('error', error.msg)
-    //     })
-    //     return res.redirect('/postimage');
-    // }
