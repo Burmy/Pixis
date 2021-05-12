@@ -60,7 +60,7 @@ function setFlashMsgFadeOut(flashMessageElement) {
 
 let flashElement = document.getElementById('flash-msg');
 if (flashElement) {
-    setFlashMessageFadeOut(flashElement);
+    setFlashMsgFadeOut(flashElement);
 }
 
 function addFlashFromFrontEnd(message) {
@@ -73,7 +73,7 @@ function addFlashFromFrontEnd(message) {
     innerFlashDiv.setAttribute('class', 'success-msg');
     document.getElementsByTagName('body')[0].appendChild(flashMessageDiv);
     console.log(flashMessageDiv)
-    setFlashMessageFadeOut(flashMessageDiv);
+    setFlashMsgFadeOut(flashMessageDiv);
 }
 
 function createCard(postData) {

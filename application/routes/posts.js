@@ -48,15 +48,14 @@ router.post('/createPost', uploader.single("uploadImage"), [
     let destinationOfThumbnail = req.file.destination + "/" + fileAsThumbnail;
     let title = req.body.title;
     let description = req.body.description;
-    let fk_userID = req.session.userID;
+    let fk_userId = req.session.userId;
 
-    console.log(fk_userID)
 
     sharp(fileUploaded)
         .resize(200)
         .toFile(destinationOfThumbnail)
         .then(() => {
-            return PostModel.create(title, description, fileUploaded, destinationOfThumbnail, fk_userID);
+            return PostModel.create(title, description, fileUploaded, destinationOfThumbnail, fk_userId);
         })
         .then((postWasCreated) => {
             if (postWasCreated) {

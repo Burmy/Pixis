@@ -35,12 +35,12 @@ UserModel.emailExists = (email) => {
 }
 
 UserModel.authenticate = (username, password) => {
-    let userID;
+    let userId;
     let baseSQL = "SELECT id, username, password FROM users WHERE username=?;";
     return db.execute(baseSQL, [username])
         .then(([results, fields]) => {
             if (results && results.length == 1) {
-                userID = results[0].id;
+                userId = results[0].id;
                 return bcrypt.compare(password, results[0].password);
             } else {
                 return Promise.reject(-1)
@@ -48,7 +48,7 @@ UserModel.authenticate = (username, password) => {
         })
         .then((passwordsMatch) => {
             if (passwordsMatch) {
-                return Promise.resolve(userID)
+                return Promise.resolve(userId)
             } else {
                 return Promise.resolve(-1);
             }
