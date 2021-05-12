@@ -44,21 +44,75 @@ navBarToggle.addEventListener('click', function () {
     mainNav.classList.toggle('active');
 });
 
-function setFlashMsgFadeOut() {
+function setFlashMsgFadeOut(flashMessageElement) {
     setTimeout(() => {
         let currentOpacity = 1.0;
         let timer = setInterval(() => {
             if (currentOpacity < 0.5) {
                 clearInterval(timer);
-                flashElement.remove();
+                flashMessageElement.remove();
             }
             currentOpacity = currentOpacity - 0.5;
-            flashElement.style.opacity = currentOpacity;
+            flashMessageElement.style.opacity = currentOpacity;
         }, 50)
     }, 4000)
 }
 
 let flashElement = document.getElementById('flash-msg');
 if (flashElement) {
-    setFlashMsgFadeOut();
+    setFlashMessageFadeOut(flashElement);
+}
+
+function addFlashFromFrontEnd(message) {
+    let flashMessageDiv = document.createElement('div');
+    let innerFlashDiv = document.createElement('div');
+    let innerTextNode = document.createTextNode(message);
+    innerFlashDiv.appendChild(innerTextNode);
+    flashMessageDiv.appendChild(innerFlashDiv);
+    flashMessageDiv.setAttribute('id', 'flash-msg');
+    innerFlashDiv.setAttribute('class', 'success-msg');
+    document.getElementsByTagName('body')[0].appendChild(flashMessageDiv);
+    console.log(flashMessageDiv)
+    setFlashMessageFadeOut(flashMessageDiv);
+}
+
+function createCard(postData) {
+    return `<div id="post-${postData.id}" class="home_posts">
+    <img class="home_images" src="${postData.thumbnail}" alt="Missing Image">
+    <div class=" home_posts">
+        <p class=".home_titles">${postData.title}</p>
+        <p class=".home_titles">${postData.description}</p>
+        <a href="/post/${postData.id}" class="">Post Details</a>
+    </div>
+</div>`;
+}
+
+function executeSearch() {
+    let searchTerm = document.getElementById('searchText').value;
+    if (!searchTerm) {
+        location.replace('/');
+        return;
+    }
+    let mainContent = document.getElementById('main-page-content')
+    let SearchURL = `/posts/search?search=${searchTerm}`;
+    fetch(SearchURL)
+        .then((data) => {
+            return data.json();
+        })
+        .then((data_json) => {
+            let newMainContentHTML = '';
+            data_json.results.forEach((row) => {
+                newMainContentHTML += createCard(row);
+            })
+            mainContent.innerHTML = newMainContentHTML;
+            if (data_json.message) {
+                addFlashFromFrontEnd(data_json.message)
+            }
+        })
+        .catch((err) => console.log(err));
+}
+
+let searchButton = document.getElementById('searchButton');
+if (searchButton) {
+    searchButton.onclick = executeSearch;
 }

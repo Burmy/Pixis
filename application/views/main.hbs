@@ -1,19 +1,17 @@
 <div class="main-page">
-    <div class="container">
+    <div class="main-welcome">
+        <h2>This is Pixis </h2>
+        <h2>The newest photo sharing app on the Internet.</h2>
 
-        <div class="main-page-content">
-            {{!-- <div class="logo"></div> --}}
-            <h2>This is Pixis </h2>
-            <h2>The newest photo sharing app on the Internet.</h2>
+        <a href="/login">
+            <input class="button" type="submit" name="submit" value="Login">
+        </a>
 
-            <a href="/login">
-                <input class="button" type="submit" name="submit" value="Login">
-            </a>
-
-            <a href="/register">
-                <input class="button" type="submit" name="submit" value="Join Us!">
-            </a>
-        </div>
+        <a href="/register">
+            <input class="button" type="submit" name="submit" value="Join Us!">
+        </a>
+    </div>
+    <div id="main-page-content">
         {{#each results}}
         {{> card this}}
         {{/each}}
