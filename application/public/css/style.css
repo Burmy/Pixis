@@ -193,17 +193,53 @@ body{
 
 .comments-container{
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
   border-radius: 13px;
   text-align: center;
   background: #ffffff;
   box-shadow: 0 15px 16.83px 0.17px rgb(0 0 0 / 5%);
+  padding: 0 15px 0 15px;
+}
+
+.enter-comments{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+.messages{
+  border: 2px solid #0d2a471c;
+}
+
+div[id^=message-]{
+  text-align: left;
+  display: grid;
+  grid-template-rows: .3fr 1fr;
+  grid-template-columns: 3fr 1fr;
+  gap: .5rem ;
+  grid-template-areas: 
+  "author created"
+  "comment comment";
+}
+
+.author-text{
+
+}
+
+.date-posted{
+  font-size: 16px;
+  text-align: right;
+}
+
+.comment-text{
+
 }
 
 /* Form */
 form{
+  
   display: flex;
   flex-direction: column;
   align-items: center;
