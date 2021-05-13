@@ -1,14 +1,29 @@
-<div class="container">
-    <div class="post-card">
+<div class="post-page">
+    <div class="container">
+        <div class="post-container">
+            <div class="post-card">
 
-        <h2 class="heading">Posts</h2>
 
-        <h3>{{currentPost.title}}</h3>
+                <h5>Uploaded by {{currentPost.username}} at {{currentPost.created}}.</h5>
+                <h3>{{currentPost.title}}</h3>
 
-        <img class="post-image" src="/{{currentPost.photopath}}" alt="Image">
+                <img class="post-image" src="/{{currentPost.photopath}}" alt="Image">
+                <h4>{{currentPost.description}}</h4>
 
-        <h5>Uploaded by {{currentPost.username}} at {{currentPost.created}}.</h5>
-        {{currentPost.description}}
 
+
+            </div>
+            <div class="comments-container">
+                <textarea class="input" style="height: 50px;" placeholder="..."></textarea>
+                <button type="submit" style="height: 50px;" id="searchButton" class="searchButton">
+                    <i class="fa fa-arrow-up" class="searchButton"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="main-page-content">
+        {{#each results}}
+        {{> card this}}
+        {{/each}}
     </div>
 </div>

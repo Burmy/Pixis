@@ -82,7 +82,7 @@ function createCard(postData) {
     <div class=" home_posts">
         <p class=".home_titles">${postData.title}</p>
         <p class=".home_titles">${postData.description}</p>
-        <a href="/post/${postData.id}" class="">Post Details</a>
+        <a href="/post/${postData.id}">Post Details</a>
     </div>
 </div>`;
 }
