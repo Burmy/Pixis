@@ -1,38 +1,34 @@
-<nav class="navbar">
+<nav class="nav">
+    <div class="navbar">
+        <span class="navbar-toggle" id="js-navbar-toggle">
+            <i class="fa fa-bars"></i>
+        </span>
 
-    <span class="navbar-toggle" id="js-navbar-toggle">
-        <i class="fa fa-bars"></i>
-    </span>
+        <div class="brand">
+            <a href="/" class="logo"></a>
+            <h1 class="brand-title">PIXIS</h1>
+        </div>
 
-    <div class="brand">
-        <a href="/" class="logo"></a>
-        <h1 class="brand-title">PIXIS</h1>
+
+
+        <ul class="main-nav" id="js-menu">
+            {{#if logged}}
+            <li>
+                <a href="/postimage" class="button-nav">Post</a>
+            </li>
+            <li>
+                <a /users/logout id="logout-btn" class="button-nav">Logout</a>
+            </li>
+
+            {{else}}
+            <li>
+                <a href="/login" class="button-nav">Login</a>
+            </li>
+            <li>
+                <a href="/postimage" class="button-nav">Post</a>
+            </li>
+            {{/if}}
+        </ul>
+
     </div>
-
-    <div class="search">
-        <input class="input" id="searchText" type="text" placeholder="What are you looking for?">
-        <button type="submit" id="searchButton" class="searchButton">
-            <i class="fa fa-search" class="searchButton"></i>
-        </button>
-    </div>
-
-    <ul class="main-nav" id="js-menu">
-        {{#if logged}}
-        <li>
-            <a href="/postimage" class="button">Post</a>
-        </li>
-        <li>
-            <a /users/logout id="logout-btn" class="button">Logout</a>
-        </li>
-
-        {{else}}
-        <li>
-            <a href="/login" class="button">Login</a>
-        </li>
-        <li>
-            <a href="/postimage" class="button">Post</a>
-        </li>
-        {{/if}}
-    </ul>
-
 </nav>
