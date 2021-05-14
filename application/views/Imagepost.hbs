@@ -2,16 +2,11 @@
     <div class="container">
         <div class="post-container">
             <div class="post-card">
-
-
-                <h5>Uploaded by {{currentPost.username}} at {{currentPost.created}}.</h5>
+                <h5>{{currentPost.username}} at {{currentPost.created}}.</h5>
                 <h3>{{currentPost.title}}</h3>
 
                 <img class="post-image" src="/{{currentPost.photopath}}" alt="Image">
                 <h4>{{currentPost.description}}</h4>
-
-
-
             </div>
             <div class="comments-container">
                 <div id="messages">
@@ -29,6 +24,7 @@
             </div>
         </div>
     </div>
+    Check out more posts
     <div id="main-page-content">
         {{#each results}}
         {{> card this}}
@@ -36,8 +32,9 @@
     </div>
 </div>
 
-<script>
 
+
+<script>
     document.addEventListener('DOMContentLoaded', (event) => {
         document.querySelectorAll('span[class=date-posted]').forEach((postedDate) => {
             postedDate.textContent = new Date(postedDate.textContent).toLocaleString();

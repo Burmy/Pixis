@@ -52,7 +52,7 @@ router.post('/createPost', uploader.single("uploadImage"), [
 
 
     sharp(fileUploaded)
-        .resize(200)
+        .resize(300)
         .toFile(destinationOfThumbnail)
         .then(() => {
             return PostModel.create(title, description, fileUploaded, destinationOfThumbnail, fk_userId);

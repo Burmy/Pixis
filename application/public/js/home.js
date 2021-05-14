@@ -9,9 +9,9 @@ if (mainDiv) {
             photos.forEach(function (data) {
                 output +=
                     `
-                    <ul class="home_posts" id=${data.id} onclick="fadeOut(${data.id})">
-                        <img class="home_images" src="${data.url}">
-                        <li class="home_titles">${data.title}</li>
+                    <ul class="home-posts" id=${data.id} onclick="fadeOut(${data.id})">
+                        <img class="home-images" src="${data.url}">
+                        <li class="home-titles">${data.title}</li>
                     </ul>
                     `
             });
@@ -77,11 +77,11 @@ function addFlashFromFrontEnd(message) {
 }
 
 function createCard(postData) {
-    return `<div id="post-${postData.id}" class="home_posts">
-    <img class="home_images" src="${postData.thumbnail}" alt="Missing Image">
-    <div class=" home_posts">
-        <p class=".home_titles">${postData.title}</p>
-        <p class=".home_titles">${postData.description}</p>
+    return `<div id="post-${postData.id}" class="home-posts">
+    <a href="/post/${postData.id}"> <img class="home-images" src="${postData.thumbnail}" alt="Missing Image"> </a>
+    <div class="home-info">
+        <p class="home-titles">${postData.title}</p>
+        <p class="home-desc">${postData.description}</p>
         <a href="/post/${postData.id}">Post Details</a>
     </div>
 </div>`;
