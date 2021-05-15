@@ -1,6 +1,5 @@
 /* Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
 
 html, body {
   margin: 0;
@@ -14,8 +13,10 @@ html, body {
 
 body{
   /* Font  */
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif; */
+  font-family: 'Barlow', sans-serif;
   font-size: 20px;
+ 
 
   /* Coloring */
   color: #111;
@@ -52,28 +53,31 @@ body{
   text-align: center;
 }
 .welcome-head{
+  
   letter-spacing: 15px;
   font-size: 60px;
   margin-bottom: 20px;
+  margin-top: 0;
+  font-weight: 700;
 }
 
 .welcome-sub{
   font-size: 20px;
-  color: #aaa;
+  color: rgb(138, 138, 138);
   margin-top: 10px;
   margin-bottom: 30px;
-  font-weight: 500;
+  letter-spacing: 1.2px;
 }
 
 #main-page-content{
   justify-content: center;
   display: grid;
-  gap: 30px 0px;
+  gap: 0px 0px;
   justify-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(min-content, 450px));
-  grid-template-rows: repeat(3, 550px);
-  grid-auto-columns: repeat(3, 450px);
-  grid-auto-rows: repeat(3, 550px);
+  grid-template-columns: repeat(auto-fit, minmax(min-content, 420px));
+  grid-template-rows: repeat(3, 520px);
+  grid-auto-columns: repeat(3, 420px);
+  grid-auto-rows: repeat(3, 520px);
 }
 
 /* Home page */
@@ -91,10 +95,10 @@ body{
   display: grid;
   gap: 10px 10px;
   justify-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(min-content, 450px));
-  grid-template-rows: repeat(3, 550px);
-  grid-auto-columns: repeat(3, 450px);
-  grid-auto-rows: repeat(3, 550px);
+  grid-template-columns: repeat(auto-fit, minmax(min-content, 420px));
+  grid-template-rows: repeat(3, 520px);
+  grid-auto-columns: repeat(3, 420px);
+  grid-auto-rows: repeat(3, 520px);
 }
 
 #home-count {
@@ -111,39 +115,63 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 16px;
+  border-radius: 8px;
   background: #F9F9F9;
-  border: 2px solid #111;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  border: 0px solid #111;
+  width: 400px;
+  height: 500px;
+  overflow: hidden;
 }
 
-.home-posts:hover{
-  transform: scale(1.05);
-	
-}
+
 
 .home-images{
-  border-radius: 14px 14px 0px 0px;
-  width:400px;
-  height:400px;
-  
+  /* border-radius: 14px; */
+  width: 400px;
+  height: 500px;
+	object-fit: cover;
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
 }
 
+.home-images:hover{
+  transform: scale(1.05);
+}
+
+.home-posts:hover .home-info {
+  display: block;
+}
+
+
 .home-info{
-text-align: center;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  display: none;
+  background: white;
+  margin-top: 15px;
+  margin-left: 15px;
+  border-radius: 8px;
+  padding: 18px;
+  border: 0px solid #111;
+  box-shadow: 0 15px 16.83px 0.17px rgb(0 0 0 / 5%);
 }
 
 .home-titles{
-  text-align: center;
-  margin-top: 10px;
-  padding: 15px 0 5px 0;
+  padding: 0 0 10px 0;
   margin: 0;
-  font-size: 25px;
+  font-size: 22px;
+  font-weight: 700;
+
 }
 .home-desc{
-  padding: 10px;
+  padding: 0;
   margin: 0;
-  font-size: 16px;
+  font-size: 19px;
+  color: rgb(138, 138, 138);
+
 }
 /* Login Page*/
 .login-page{
@@ -158,7 +186,7 @@ text-align: center;
   width: 450px;
   background-color: #fff;
   border: 2px solid #111;
-  border-radius: 13px;
+  border-radius: 12px;
   margin-bottom: 400px;
 }
 
@@ -174,7 +202,7 @@ text-align: center;
   margin: 30px;
   width: 650px;
   background: #ffffff;
-  border-radius: 13px;
+  border-radius: 12px;
   margin-bottom: 300px;
   border: 2px solid #111;
 }
@@ -188,7 +216,7 @@ text-align: center;
 }
 
 .post-card{
-  border-radius: 13px;
+  border-radius: 12px;
   padding-left: 50px;
   padding-right: 50px;
   text-align: center;
@@ -197,7 +225,7 @@ text-align: center;
 }
 
 .post-image{
-  border-radius: 8px;
+  border-radius: 12px;
   width: 100%;
   max-width: 500px;
   height: auto;
@@ -221,7 +249,7 @@ text-align: center;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  border-radius: 13px;
+  border-radius: 12px;
   text-align: center;
   background: #ffffff;
   border: 2px solid #111;
@@ -250,7 +278,7 @@ text-align: center;
 div[id^=message-]{
   padding: 15px 15px 5px 15px;
   border: 1px solid rgba(17, 17, 17, 0.466);
-  border-radius: 13px;
+  border-radius: 8px;
   margin: 5px 0 5px 0;
   text-align: left;
   display: grid;
@@ -300,10 +328,9 @@ a{
   margin: 15px 0 15px 0;
   line-height: 45px;
   width: 70%;
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid #e5e5e5;
   background: #e5e5e5;
-  color: #0D2A47;
   padding: 0 22px;
   font-size: 18px;
 }
@@ -316,26 +343,26 @@ a{
   color: #0D2A47;
   opacity: 0.8; 
   font-size: 16px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Barlow', sans-serif;
 }
 
 /* Image Description Text Area */
 textarea {
   resize: none;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Barlow', sans-serif;
 }
 
 textarea::placeholder {
   font-size: 16px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Barlow', sans-serif;
   padding-top: 3px;
 }
 
 /* Upload Image Button */
 input[type=file]::file-selector-button {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Barlow', sans-serif;
   border: 1px solid #0D2A47;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #0D2A47;
   padding: 10px 15px 10px 15px;
   font-size: 16px;
@@ -354,7 +381,7 @@ input[type=file]::file-selector-button {
   width: 300px;
   height: 48px;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Barlow', sans-serif;
 }
 
 .button:hover {
@@ -463,8 +490,10 @@ input[type=file]::file-selector-button {
 }
 
 .active {
-  display: flex;
-  align-items: flex-end;
+  display: block;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding: 0;
 }
 
 @media screen and (min-width: 790px) {
@@ -541,16 +570,15 @@ input[type=file]::file-selector-button {
   text-align: center;
   border-radius: 8px;
   padding: 18px;
-  font-size: 21px;
+  font-size: 20px;
+  color: #000000;
 }
 
 .error-msg{
   background-color: #fc7955;
-  color: #000000;
 }
 
 .success-msg{
   background-color: #6cd17a;
-  color: #000000;
 }
 

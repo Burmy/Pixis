@@ -82,9 +82,17 @@ function createCard(postData) {
     <div class="home-info">
         <p class="home-titles">${postData.title}</p>
         <p class="home-desc">${postData.description}</p>
-        <a href="/post/${postData.id}">Post Details</a>
     </div>
 </div>`;
+
+    //     return `<div id="post-${postData.id}" class="home-posts">
+    //     <a href="/post/${postData.id}"> <img class="home-images" src="${postData.thumbnail}" alt="Missing Image"> </a>
+    //     <div class="home-info">
+    //         <p class="home-titles">${postData.title}</p>
+    //         <p class="home-desc">${postData.description}</p>
+    //         <a href="/post/${postData.id}">Post Details</a>
+    //     </div>
+    // </div>`;
 }
 
 function executeSearch() {
@@ -116,3 +124,15 @@ let searchButton = document.getElementById('searchButton');
 if (searchButton) {
     searchButton.onclick = executeSearch;
 }
+
+let imgContent = document.getElementsByClassName('home-info');
+
+function showImgContent(e) {
+    for (var i = 0; i < imgContent.length; i++) {
+        x = e.pageX;
+        y = e.pageY;
+        imgContent[i].style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    }
+};
+
+document.addEventListener('mousemove', showImgContent);
