@@ -26,8 +26,6 @@ body{
 
 }
 
-
-
 /* Container for all Cards */
 .container{
   display: flex;
@@ -401,7 +399,7 @@ input[type=file]::file-selector-button {
     align-items: center;
     border: 2px solid #111;
     border-radius: 8px;
-    background-color: #FEE6E3;
+    background-color: #fbdff0;
     /* background-color: #ffb170; */
     color: #111;
     font-size: 18px;
@@ -409,7 +407,7 @@ input[type=file]::file-selector-button {
 }
 
 .button-nav:hover {
-  background-color: #fcdad6;
+  background-color: #f4eeff;
 } 
 
 
