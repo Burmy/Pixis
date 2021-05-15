@@ -1,5 +1,6 @@
 /* Font */
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700&display=swap');
 
 html, body {
   margin: 0;
@@ -10,6 +11,7 @@ html, body {
 *:focus {
   outline: none;
 }
+
 
 body{
   /* Font  */
@@ -23,6 +25,8 @@ body{
   background: #ffffff;
 
 }
+
+
 
 /* Container for all Cards */
 .container{
@@ -491,8 +495,6 @@ input[type=file]::file-selector-button {
 
 .active {
   display: block;
-  justify-content: flex-end;
-  flex-direction: column;
   padding: 0;
 }
 
@@ -550,12 +552,11 @@ input[type=file]::file-selector-button {
   display: flex;
   text-align: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0); 
+  background: rgb(255, 255, 255); 
   clear: both;
   position: relative;
   height: 60px;
   margin-top: -60px;
-  border-top: 1px solid rgba(0, 0, 0, 0.288);
 }
 
 #flash-msg{

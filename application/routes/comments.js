@@ -9,7 +9,7 @@ router.post('/create', (req, res, next) => {
         errorPrint("Must be logged in to comment")
         res.json({
             code: -1,
-            status: "danger",
+            status: "error",
             message: "Must be logged in to comment"
         })
     } else {

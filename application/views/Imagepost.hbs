@@ -15,8 +15,7 @@
                     {{/each}}
                 </div>
                 <div class="enter-comments">
-                    <textarea class="input" id="comment-text" style="height: 50px;"
-                        placeholder="Comment Here!"></textarea>
+                    <input class="input" id="comment-text" style="height: 50px;" placeholder="Comment Here!"></input>
                     <button type="submit" style="height: 50px;" id="comment-button" class="searchButton">
                         <i class="fa fa-arrow-up" class="searchButton"></i>
                     </button>
@@ -49,7 +48,6 @@
                 <span class="date-posted">${new Date().toLocaleString()}</span>
                  <div class="comment-text">${data.comment}</div>
             </div>`;
-        console.log(template)
         document.getElementById('messages').firstChild.before(template.content.firstChild);
     }
 

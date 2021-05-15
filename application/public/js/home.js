@@ -125,6 +125,13 @@ if (searchButton) {
     searchButton.onclick = executeSearch;
 }
 
+function pressEnterSearch(e) {
+    if (e.keyCode === 13) {
+        e.preventDefault();
+        executeSearch();
+    }
+}
+
 let imgContent = document.getElementsByClassName('home-info');
 
 function showImgContent(e) {
