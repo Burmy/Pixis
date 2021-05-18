@@ -1,38 +1,29 @@
 <div class="main-page">
     <div class="main-welcome">
         {{#if logged}}
-        <h2>See Whats Trending!</h2>
-        <div class="search">
-            <input class="input" id="searchText" type="text" placeholder="What are you looking for?">
-            <button type="submit" id="searchButton" class="searchButton">
-                <i class="fa fa-search" class="searchButton"></i>
-            </button>
-        </div>
+        <h2 style="margin-top:-50px;">See Whats Trending!</h2>
         {{else}}
-        <div class="home-svg">
-        </div>
         <h2 class="welcome-head">This is Pixis </h2>
         <h2 class="welcome-sub">The newest photo sharing app on the Internet.</h2>
         <a href="/register">
             <input class="button" style="margin-bottom: 50px;" type="submit" name="submit" value="Join Us!">
         </a>
+
+        {{/if}}
+    </div>
+
+    <div class="card-container">
         <div class="search">
             <input class="input" onkeypress="pressEnterSearch(event)" id="searchText" type="text"
                 placeholder="What are you looking for?">
-
             <button type="submit" id="searchButton" class="searchButton">
                 <i class="fa fa-search" class="searchButton"></i>
             </button>
         </div>
-        {{/if}}
-
-
-
+        <div id="main-page-content">
+            {{#each results}}
+            {{> card this}}
+            {{/each}}
+        </div>
     </div>
-    <div id="main-page-content">
-        {{#each results}}
-        {{> card this}}
-        {{/each}}
-    </div>
-
 </div>
