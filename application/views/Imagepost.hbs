@@ -2,11 +2,12 @@
     <div class="container">
         <div class="post-container">
             <div class="post-card">
-                <h5>{{currentPost.username}} at {{currentPost.created}}.</h5>
-                <h3>{{currentPost.title}}</h3>
+                <h1 style="margin-bottom: -5px; color:#8d61f5;">@{{currentPost.username}}</h1>
+                <h2>{{currentPost.title}}</h2>
 
                 <img class="post-image" src="/{{currentPost.photopath}}" alt="Image">
-                <h4>{{currentPost.description}}</h4>
+                {{currentPost.created}}
+                <h3 style="margin-bottom: 25px;">{{currentPost.description}}</h3>
             </div>
             <div class="comments-container">
                 <div id="messages">

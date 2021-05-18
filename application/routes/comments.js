@@ -21,6 +21,7 @@ router.post('/create', (req, res, next) => {
             .then((wasSuccessful) => {
                 if (wasSuccessful != -1) {
                     successPrint(`comment was created for ${username}`)
+                    req.flash('success', 'Comment was created');
                     res.json({
                         code: 1,
                         status: "success",
@@ -30,6 +31,7 @@ router.post('/create', (req, res, next) => {
                     })
                 } else {
                     errorPrint('comment was not saved')
+                    req.flash('danger', 'Comment was not created');
                     res.json({
                         code: -1,
                         status: "danger",

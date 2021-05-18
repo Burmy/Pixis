@@ -72,7 +72,6 @@ function addFlashFromFrontEnd(message) {
     flashMessageDiv.setAttribute('id', 'flash-msg');
     innerFlashDiv.setAttribute('class', 'success-msg');
     document.getElementsByTagName('body')[0].appendChild(flashMessageDiv);
-    console.log(flashMessageDiv)
     setFlashMsgFadeOut(flashMessageDiv);
 }
 
@@ -85,14 +84,6 @@ function createCard(postData) {
     </div>
 </div>`;
 
-    //     return `<div id="post-${postData.id}" class="home-posts">
-    //     <a href="/post/${postData.id}"> <img class="home-images" src="${postData.thumbnail}" alt="Missing Image"> </a>
-    //     <div class="home-info">
-    //         <p class="home-titles">${postData.title}</p>
-    //         <p class="home-desc">${postData.description}</p>
-    //         <a href="/post/${postData.id}">Post Details</a>
-    //     </div>
-    // </div>`;
 }
 
 function executeSearch() {
@@ -167,3 +158,22 @@ const options = {
 
 const darkmode = new Darkmode(options);
 darkmode.showWidget();
+
+
+function pwdToggle() {
+    var toggle = document.getElementById("pwd");
+    if (toggle.type === "password") {
+        toggle.type = "text";
+    } else {
+        toggle.type = "password";
+    }
+}
+
+function c_pwdToggle() {
+    var toggle = document.getElementById("c_pwd");
+    if (toggle.type === "password") {
+        toggle.type = "text";
+    } else {
+        toggle.type = "password";
+    }
+}

@@ -26,10 +26,6 @@ router.get('/postimage', function (req, res, next) {
   res.render('postimage', { title: "Post your Image" });
 });
 
-router.get('/home', function (req, res, next) {
-  res.render('home', { title: "See Whats Happening" });
-});
-
 router.get('/post/:id(\\d+)', getPostbyId, getCommentsByPostId, (req, res, next) => {
   res.render('imagepost', { title: `Post ${req.params.id}` });
 })
