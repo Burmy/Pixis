@@ -216,12 +216,6 @@ body{
 
 /* Image Post Page */
 
-.post-page{
-  /* position: relative;
-  background-repeat: repeat;
-  background-size: cover; */
-}
-
 .post-card{
   border-radius: 12px;
   padding-left: 50px;
@@ -236,8 +230,6 @@ body{
   width: 100%;
   max-width: 500px;
   height: auto;
-  border: 2px solid #0d2a471c;
-  box-shadow: 0 15px 16.83px 0.17px rgb(0 0 0 / 5%);
 }
 
 .post-container{
@@ -261,7 +253,7 @@ body{
   background: #ffffff;
   border: 2px solid #111;
   padding: 0 15px 0 15px;
-  max-height: 80vh;
+  max-height: 100%;
   width: 100%;
 }
 
@@ -589,9 +581,13 @@ input[type=file]::file-selector-button {
   background-color: #6cd17a;
 }
 
-/* .darkmode--activated .nav{
-  background-color: #000000;
+.darkmode--activated .nav, .darkmode--activated .footer{
+  background-color: #24282A;
+  color: #C0C2E6;
 }
 .darkmode--activated .logo{
   background-color: #ffffff;
-} */
+}
+.darkmode--activated .button-nav{
+  border: solid 2px white;
+}
