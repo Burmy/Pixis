@@ -70,15 +70,15 @@ body{
   gap: 0px 0px;
   justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(min-content, 440px));
-  grid-template-rows: repeat(3, 540px);
+  grid-template-rows: repeat(2, 540px);
   grid-auto-columns: repeat(3, 420px);
-  grid-auto-rows: repeat(3, 520px);
+  grid-auto-rows: repeat(2, 520px);
 }
 
 .card-container{
   background: #EEEFF8;
   margin-top: -150px;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
 }
 
 /* Home page */
@@ -133,9 +133,11 @@ body{
   margin-top: 4px;
   font-size: 18px;
   text-align: center;
+  word-spacing: 12px;
 }
 
 .home-desc{
+  display: flex;
   padding: 0;
   margin: 0;
   font-size: 20px;
@@ -458,33 +460,28 @@ input[type=file]::file-selector-button {
   display: none;
 }
 
-.nav{
+.navbar {
+  background-color: #ffffff;
   display: flex;
-  background-color:rgb(255, 255, 255) ;
   position: fixed;
   width: 100%;
-  height: 90px;
-  z-index: 150;
   align-items: center;
   justify-content: center;
+  height: 90px;
+  z-index: 150;
+  flex-direction: row;
 }
 
-.navbar {
+.navbar-items{
   display: flex;
-  font-size: 18px;
-  z-index: 100;
-  position: fixed;
-  width: 100%;
-}
-
-.main-nav {
-  list-style-type: none;
-  display: none;
+  margin-left:auto;
+  padding-right: 160px;
 }
 
 .brand{
   display: flex;
   flex-direction: row;
+  padding-left: 150px;
 }
 .brand-title{
   display: flex;
@@ -501,25 +498,16 @@ input[type=file]::file-selector-button {
   width: 70px;
   margin: 0px 15px 0px 15px;
   vertical-align: top;
-  
 }
 
-.navbar-toggle {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 24px;
-}
-
-.active {
-  display: block;
-  padding: 0;
+.main-nav {
+  display: flex;
+  flex-direction: row;
 }
 
 .main-nav li {
   margin: 5px;
+  display: flex;
 }
 
 .search {
@@ -572,16 +560,16 @@ input[type=file]::file-selector-button {
 
 #flash-msg{
   position: fixed;
-  left: 50%;
-  top: 150px;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 999;
-  transform: translate(-50%,0);
+  overflow: hidden; 
 }
 
 #flash-msg div{
   text-align: center;
-  border-radius: 8px;
-  padding: 18px;
+  padding: 25px;
   font-size: 20px;
   color: #000000;
 }
@@ -594,39 +582,18 @@ input[type=file]::file-selector-button {
   background-color: #6cd17a;
 }
 
-/* nav bar */
-@media screen and (min-width: 768px) {
-  .navbar {
-      justify-content: space-between;
-      align-items: center;
-      width: 70%;
-  }
-
-  .main-nav {
-      display: flex;
-      flex-direction: row;
-  }
-
-  .main-nav li {
-      margin: 5px;
-      display: flex;
-  }
-
-  .navbar-toggle {
-      display: none;
-  }
-}
 
 /* Medium devices (landscape tablets, 1600px and up) */
 @media only screen and (max-width: 1600px) {
   .main-welcome {
     padding-bottom: 410px;
   }
+
   .main-page {
     padding-top: 100px;
   }
   .search {
-    padding-top: 150px;
+    margin-top: 150px;
   }
 }
 
@@ -662,13 +629,40 @@ input[type=file]::file-selector-button {
     padding-bottom: 225px;
   }
   .search {
-    padding-top: 200px;
+    margin-top: 200px;
   }
 
 }
 
 /* Extra small devices (phones, 450px and down) */
 @media only screen and (max-width: 450px) {
+
+  .navbar{
+    flex-direction: column;
+    height: 125px;
+    padding: 0 0 10px 0;
+  }
+.logo{
+  margin: 0;
+}
+.brand-title{
+  display: none;
+}
+  .brand{
+    padding-left: 0px;
+  }
+
+  .main-nav, .navbar-items{
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+  }
+
+  .main-nav li {
+    margin-right: 10px;
+
+}
+
   #imgPreview{
     max-width: 250px;
     height: auto;
@@ -681,7 +675,7 @@ input[type=file]::file-selector-button {
     padding-bottom: 290px;
   }
   .search {
-    padding-top: 150px;
+    margin-top: 150px;
   }
 
   .home-posts{

@@ -1,7 +1,7 @@
 <div class="main-page">
     <div class="main-welcome">
         {{#if logged}}
-        <h2>See Whats Trending!</h2>
+        <h2 style="margin-top: 0px;">See Whats Trending!</h2>
         {{else}}
         <h2 class="welcome-head">This is Pixis </h2>
         <h2 class="welcome-sub">The newest photo sharing app on the Internet.</h2>
@@ -15,7 +15,7 @@
     <div class="card-container">
         <div class="search">
             <input id="searchText" onkeypress="pressEnterSearch(event)" type="text"
-                placeholder="Search tags or specific captions!">
+                placeholder="Search #hashtags or specific captions!">
             <button type="submit" id="searchButton">
                 <i class="fa fa-search"></i>
             </button>

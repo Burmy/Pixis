@@ -1,17 +1,10 @@
-<nav class="nav">
-    <div class="navbar">
-        <span class="navbar-toggle" id="js-navbar-toggle">
-            <i class="fa fa-bars"></i>
-        </span>
-
-        <div class="brand">
-            <a href="/" class="logo"></a>
-            <h1 class="brand-title">PiXiS</h1>
-        </div>
-
-
-
-        <ul class="main-nav" id="js-menu">
+<div class="navbar">
+    <div class="brand">
+        <a href="/" class="logo"></a>
+        <h1 class="brand-title">PiXiS</h1>
+    </div>
+    <nav class="navbar-items">
+        <ul class="main-nav">
             {{#if logged}}
             <li>
                 <a href="/postimage" class="button-nav">Post</a>
@@ -29,6 +22,5 @@
             </li>
             {{/if}}
         </ul>
-
-    </div>
-</nav>
+    </nav>
+</div>
