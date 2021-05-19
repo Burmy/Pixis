@@ -44,7 +44,6 @@ router.post('/register', [
     return res.redirect('/register');
   }
 
-  console.log(req.body);
   let username = req.body.username;
   let email = req.body.email;
   let password = req.body.password;

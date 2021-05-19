@@ -1,42 +1,3 @@
-let mainDiv = document.getElementById("home-container");
-
-if (mainDiv) {
-    let fetchURL = "https://jsonplaceholder.typicode.com/albums/2/photos"
-    fetch(fetchURL)
-        .then((response) => response.json())
-        .then((photos) => {
-            let output = "";
-            photos.forEach(function (data) {
-                output +=
-                    `
-                    <ul class="home-posts" id=${data.id} onclick="fadeOut(${data.id})">
-                        <img class="home-images" src="${data.url}">
-                        <li class="home-titles">${data.title}</li>
-                    </ul>
-                    `
-            });
-            count = photos.length
-            document.getElementById("home-container").innerHTML = output;
-            document.getElementById("home-count").innerHTML = `There are ${count} photo(s) being shown`;
-        })
-
-}
-
-function fadeOut(id) {
-    let opacity = 1;
-    let timer = setInterval(function () {
-        if (opacity <= 0.1) {
-            clearInterval(timer);
-            document.getElementById(id).remove();
-            count--;
-            document.getElementById("home-count").innerHTML = `There are ${count} photo(s) being shown`;
-        }
-        document.getElementById(id).style.opacity = opacity;
-        opacity -= 0.1;
-    }, 20);
-}
-
-
 let mainNav = document.getElementById('js-menu');
 let navBarToggle = document.getElementById('js-navbar-toggle');
 
@@ -136,30 +97,6 @@ function showImgContent(e) {
 document.addEventListener('mousemove', showImgContent);
 
 
-
-function addDarkmodeWidget() {
-    new Darkmode().showWidget();
-}
-window.addEventListener('load', addDarkmodeWidget);
-
-const options = {
-    bottom: '64px', // default: '32px'
-    right: 'unset', // default: '32px'
-    left: '32px', // default: 'unset'
-    time: '0.3s', // default: '0.3s'
-    mixColor: '#fff', // default: '#fff'
-    backgroundColor: '#fff',  // default: '#fff'
-    buttonColorDark: '#100f2c',  // default: '#100f2c'
-    buttonColorLight: '#fff', // default: '#fff'
-    saveInCookies: false, // default: true,
-    label: '🌓', // default: ''
-    autoMatchOsTheme: false, // default: true
-}
-
-const darkmode = new Darkmode(options);
-darkmode.showWidget();
-
-
 function pwdToggle() {
     var toggle = document.getElementById("pwd");
     if (toggle.type === "password") {
@@ -177,3 +114,11 @@ function c_pwdToggle() {
         toggle.type = "password";
     }
 }
+
+var loadFile = function (event) {
+    var output = document.getElementById('imgPreview');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function () {
+        URL.revokeObjectURL(output.src) // free memory
+    }
+};

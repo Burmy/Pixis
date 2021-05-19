@@ -17,11 +17,9 @@ body{
   font-family: 'Barlow', sans-serif;
   font-size: 20px;
  
-
   /* Coloring */
   color: #111;
   background: #ffffff;
-
 }
 
 /* Container for all Cards */
@@ -33,11 +31,9 @@ body{
   overflow: hidden;
 }
 
-
 .main-page{
   z-index: -5;
   padding-top: 150px;
-
 }
 
 .main-welcome{
@@ -48,14 +44,14 @@ body{
   background-size: cover;
   max-width: 100vw;
   position: relative;
-  padding-bottom: 300px;
+  padding-bottom: 650px;
 }
 
 .welcome-head{
   letter-spacing: 15px;
-  font-size: 60px;
+  font-size: 70px;
   margin-bottom: 20px;
-  margin-top: 0;
+  margin-top: 130px;
   font-weight: 700;
   text-align: center;
 }
@@ -64,7 +60,6 @@ body{
   font-size: 20px;
   color: rgb(138, 138, 138);
   margin-top: 10px;
-  margin-bottom: 30px;
   letter-spacing: 1.2px;
   text-align: center;
 }
@@ -79,21 +74,14 @@ body{
   grid-auto-columns: repeat(3, 420px);
   grid-auto-rows: repeat(3, 520px);
 }
+
 .card-container{
-  background: #C0C2E6;
+  background: #EEEFF8;
   margin-top: -150px;
+  padding-bottom: 200px;
 }
 
 /* Home page */
-
-.home-page{
-  position: relative;
-  background: url(/public/images/home.svg);
-  background-repeat: repeat;
-  background-size: cover;
-  padding-top: 200px;
-}
-
 .home-posts{
   margin-top: 30px;
   display: flex;
@@ -121,7 +109,6 @@ body{
 .home-posts:hover .home-info {
   display: block;
 }
-
 
 .home-info{
   position: absolute;
@@ -151,7 +138,6 @@ body{
   margin: 0;
   font-size: 19px;
   color: rgb(138, 138, 138);
-
 }
 /* Login Page*/
 
@@ -166,8 +152,7 @@ body{
 }
 
 /* Registration and Upload Page Card */
-
-.reg-upload-card{
+.reg-card{
   margin: 30px;
   width: 650px;
   background: #ffffff;
@@ -175,6 +160,52 @@ body{
   margin-bottom: 300px;
   border: 2px solid #111;
   box-shadow: 10px 10px#000000;
+}
+
+/* Upload Page Card */
+.upload-card{
+  margin: 30px;
+  width: 80%;
+  background: #ffffff;
+  border-radius: 12px;
+  margin-bottom: 300px;
+  border: 2px solid #111;
+  box-shadow: 10px 10px#000000;
+}
+
+.upload-container{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  margin: 30px 0 30px 0;
+}
+
+
+#imgPreview{
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  margin: 15px;
+}
+
+.upload-image{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 50%;
+  margin: 30px;
+}
+
+.upload-info{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
 }
 
 /* Image Post Page */
@@ -229,6 +260,17 @@ body{
   justify-content: center;
 }
 
+#comment-button{
+  border: 0px solid #00000000;
+  background: #ffffff;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  font-size: 20px;
+  margin: 15px 0 15px 0;
+  width: 70px;
+}
+
 #messages{
   margin-top: 10px;
   height: 80vh;
@@ -272,6 +314,7 @@ align-items: flex-end;
   grid-area: comment;
   overflow: hidden;
   text-overflow: ellipsis;
+  
 }
 
 /* Form */
@@ -335,7 +378,6 @@ textarea {
 textarea::placeholder {
   font-size: 16px;
   font-family: 'Barlow', sans-serif;
-  padding-top: 3px;
 }
 
 /* Upload Image Button */
@@ -393,13 +435,6 @@ input[type=file]::file-selector-button {
   background-color: #d4c1ff;
   box-shadow: 0px 0px #00000000;
 } 
-
-
-.upload{
-  margin: 20px;
-  width: 80%;
-  text-align: center;
-}
 
 /* Validation */
 .check{
@@ -480,28 +515,6 @@ input[type=file]::file-selector-button {
   padding: 0;
 }
 
-@media screen and (min-width: 790px) {
-  .navbar {
-      justify-content: space-between;
-      align-items: center;
-      width: 70%;
-  }
-
-  .main-nav {
-      display: flex;
-      flex-direction: row;
-  }
-
-  .main-nav li {
-      margin: 5px;
-      display: flex;
-  }
-
-  .navbar-toggle {
-      display: none;
-  }
-}
-
 .main-nav li {
   margin: 5px;
 }
@@ -516,23 +529,38 @@ input[type=file]::file-selector-button {
   
 }
 
-.searchButton {
-  border: 1px solid #000000;
-  background: #000000;
+.search-input{
+  border-radius: 8px 0 0 8px;
+  border: 2px solid #000000;
+  box-shadow: 15px 5px #000000;
+  background: #ffffff;
+  margin: 15px 0 15px 0;
+  line-height: 45px;
+  width: 70%;
+  border-radius: 8px;
+  padding: 0 22px;
+  font-size: 18px;
+
+}
+
+#searchButton {
+  border: 2px solid #000000;
+  background: #ffffff;
   text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
+  color: rgb(0, 0, 0);
+  border-radius: 0 8px 8px 0;
   cursor: pointer;
   font-size: 20px;
   margin: 15px 0 15px 0;
-  width: 50px;
+  width: 70px;
+  box-shadow: 5px 5px#000000;
 }
 
 .footer{
   display: flex;
   text-align: center;
   justify-content: center;
-  background: rgb(255, 255, 255); 
+  background: #EEEFF8;
   clear: both;
   position: relative;
   height: 60px;
@@ -564,13 +592,116 @@ input[type=file]::file-selector-button {
   background-color: #6cd17a;
 }
 
-.darkmode--activated .nav, .darkmode--activated .footer{
-  background-color: #24282A;
-  color: #C0C2E6;
+/* nav bar */
+@media screen and (min-width: 768px) {
+  .navbar {
+      justify-content: space-between;
+      align-items: center;
+      width: 70%;
+  }
+
+  .main-nav {
+      display: flex;
+      flex-direction: row;
+  }
+
+  .main-nav li {
+      margin: 5px;
+      display: flex;
+  }
+
+  .navbar-toggle {
+      display: none;
+  }
 }
-.darkmode--activated .logo{
-  background-color: #ffffff;
+
+/* Medium devices (landscape tablets, 1600px and up) */
+@media only screen and (max-width: 1600px) {
+  .main-welcome {
+    padding-bottom: 410px;
+  }
+  .main-page {
+    padding-top: 100px;
+  }
+  .search {
+    padding-top: 150px;
+  }
 }
-.darkmode--activated .button-nav{
-  border: solid 2px white;
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+  .upload-container{
+    flex-direction: column;
+  }
+
+  #imgPreview{
+    max-width: 300px;
+    height: auto;
+  }
+
+  .upload-image{
+    width: 100%;
+    margin: 0px;
+  }
+
+  .upload-info{
+    width: 100%;
+  }
+
+  .post-container{
+    display: block;
+  }
+  .comments-container{
+    margin-top: 30px;
+    height: 30%;
+  }
+
+  .main-welcome {
+    padding-bottom: 225px;
+  }
+  .search {
+    padding-top: 200px;
+  }
+
+}
+
+/* Extra small devices (phones, 450px and down) */
+@media only screen and (max-width: 450px) {
+  #imgPreview{
+    max-width: 250px;
+    height: auto;
+  }
+
+  .button{
+    width: 200px;
+  }
+  .main-welcome {
+    padding-bottom: 290px;
+  }
+  .search {
+    padding-top: 150px;
+  }
+
+  .home-posts{
+    width: 300px;
+    height: 400px;
+  }
+
+  .home-images{
+    width: 300px;
+    height: 400px;
+  }
+
+  #main-page-content{
+    grid-template-rows: repeat(3, 450px);
+  }
+
+  .welcome-head{
+    font-size: 55px;
+  }
+  
+  .welcome-sub{
+    margin: 0 10px 0 10px;
+  }
+
 }
