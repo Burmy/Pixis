@@ -19,7 +19,14 @@ Please follow the instructions below and fill in the information requested when 
 # Build/Run Instructions
 
 ## Build Instructions
-1. Install Node.js - npm install
+1. cd reponame/applcation
+2. npm install
 
 ## Run Instructions
 1. npm start
+
+## Extra/Changes 
+1. Changed title of the posts to hashtags to make it easier to search posts. This is only applied on the frontend, the hashtags still identify as "titles" in the database.
+2. Can execute search by pressing enter key.
+3. All pages are responsive.
+4. Different design and UI/UX.
