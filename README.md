@@ -19,7 +19,7 @@ Please follow the instructions below and fill in the information requested when 
 # Build/Run Instructions
 
 ## Build Instructions
-1. cd reponame/applcation
+1. cd csc317-termproject-Burmy/application
 2. npm install
 
 ## Run Instructions
