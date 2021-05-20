@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var isLoggedIn = require('../middleware/routeprotectors').userIsLoggedIn;
+const { getRecentPosts, getPostbyId, getCommentsByPostId } = require('../middleware/postmiddleware')
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', getRecentPosts, function (req, res, next) {
   res.render('main', { title: "Welcome to Pixis!" });
 });
 
@@ -19,14 +20,14 @@ router.get('/imagepost', function (req, res, next) {
   res.render('imagepost', { title: "Your Post" });
 });
 
-router.use('/postimage', isLoggedIn)
+router.use('/postimage', isLoggedIn);
 router.get('/postimage', function (req, res, next) {
   res.render('postimage', { title: "Post your Image" });
 });
 
-router.get('/home', function (req, res, next) {
-  res.render('home', { title: "See Whats Happening" });
-});
+router.get('/post/:id(\\d+)', getPostbyId, getCommentsByPostId, (req, res, next) => {
+  res.render('imagepost', { title: `Post ${req.params.id}` });
+})
 
 
 module.exports = router;
