@@ -22,6 +22,8 @@ var storage = multer.diskStorage({
 
 var uploader = multer({ storage: storage });
 
+
+// Creating a Post
 router.post('/createPost', uploader.single("uploadImage"), [
 
     check('title')
@@ -77,6 +79,8 @@ router.post('/createPost', uploader.single("uploadImage"), [
         })
 })
 
+
+// Searching a Post
 router.get('/search', async (req, res, next) => {
     try {
         let searchTerm = req.query.search;

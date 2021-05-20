@@ -8,7 +8,10 @@
 
                 <input class="input" type="text" name="username" placeholder="Username" required>
 
-                <input class="input" type="password" name="password" placeholder="Password" required>
+                <div class="password-eye">
+                    <input id="pwd" class="input" type="password" name="password" placeholder="Password" required>
+                    <i class="fa fa-eye" id="togglePassword" onclick="pwdToggle(this)"></i>
+                </div>
 
                 <input class="button" type="submit" name="submit" value="Submit">
 

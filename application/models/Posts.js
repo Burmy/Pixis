@@ -1,6 +1,5 @@
 var db = require('../config/database');
 
-
 const PostModel = {};
 
 PostModel.create = (title, description, photopath, thumbnail, fk_userId) => {

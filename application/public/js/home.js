@@ -1,3 +1,4 @@
+// Flash Messages
 function setFlashMsgFadeOut(flashMessageElement) {
     setTimeout(() => {
         let currentOpacity = 1.0;
@@ -29,6 +30,8 @@ function addFlashFromFrontEnd(message) {
     setFlashMsgFadeOut(flashMessageDiv);
 }
 
+
+// Creating cards of posts
 function createCard(postData) {
     return `<div id="post-${postData.id}" class="home-posts">
     <a href="/post/${postData.id}"> <img class="home-images" src="${postData.thumbnail}" alt="Missing Image"> </a>
@@ -40,6 +43,8 @@ function createCard(postData) {
 
 }
 
+
+//Search Bar
 function executeSearch() {
     let searchTerm = document.getElementById('searchText').value;
     if (!searchTerm) {
@@ -70,6 +75,8 @@ if (searchButton) {
     searchButton.onclick = executeSearch;
 }
 
+
+//Search on pressing Enter
 function pressEnterSearch(e) {
     if (e.keyCode === 13) {
         e.preventDefault();
@@ -77,8 +84,9 @@ function pressEnterSearch(e) {
     }
 }
 
-let imgContent = document.getElementsByClassName('home-info');
 
+//Hover div on top of Home Posts
+let imgContent = document.getElementsByClassName('home-info');
 function showImgContent(e) {
     for (var i = 0; i < imgContent.length; i++) {
         x = e.pageX;
@@ -86,28 +94,10 @@ function showImgContent(e) {
         imgContent[i].style.transform = `translate3d(${x}px, ${y}px, 0)`;
     }
 };
-
 document.addEventListener('mousemove', showImgContent);
 
 
-function pwdToggle() {
-    var toggle = document.getElementById("pwd");
-    if (toggle.type === "password") {
-        toggle.type = "text";
-    } else {
-        toggle.type = "password";
-    }
-}
-
-function c_pwdToggle() {
-    var toggle = document.getElementById("c_pwd");
-    if (toggle.type === "password") {
-        toggle.type = "text";
-    } else {
-        toggle.type = "password";
-    }
-}
-
+//Image Preview for Post Image page
 var loadFile = function (event) {
     var output = document.getElementById('imgPreview');
     output.src = URL.createObjectURL(event.target.files[0]);

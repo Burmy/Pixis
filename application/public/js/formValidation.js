@@ -107,3 +107,22 @@ function checkcPwdMatch() {
 }
 
 document.getElementById("c_pwd").addEventListener("input", checkcPwdMatch);
+
+// Password and Confirm password eye toggle ** line 111 to 128 **
+function pwdToggle() {
+    var toggle = document.getElementById("pwd");
+    if (toggle.type === "password") {
+        toggle.type = "text";
+    } else {
+        toggle.type = "password";
+    }
+}
+
+function c_pwdToggle() {
+    var toggle = document.getElementById("c_pwd");
+    if (toggle.type === "password") {
+        toggle.type = "text";
+    } else {
+        toggle.type = "password";
+    }
+}

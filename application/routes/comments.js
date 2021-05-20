@@ -1,9 +1,10 @@
 var express = require('express');
 const { errorPrint, successPrint } = require('../helpers/debug/debugprinters');
 var router = express.Router();
-const { getRecentPosts, getPostbyId } = require('../middleware/postmiddleware')
 const { create } = require('../models/Comments')
 
+
+// Posting Comments
 router.post('/create', (req, res, next) => {
     if (!req.session.username) {
         errorPrint("Must be logged in to comment")

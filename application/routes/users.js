@@ -1,13 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../config/database');
 const UserModel = require('../models/Users')
 const { successPrint, errorPrint } = require('../helpers/debug/debugprinters');
-var bcrypt = require('bcrypt');
 const UserError = require('../helpers/error/UserError');
 const { check, validationResult } = require('express-validator');
-const { usernameExists } = require('../models/Users');
 
+// Registering the User
 router.post('/register', [
 
   check('username')
@@ -97,6 +95,7 @@ router.post('/register', [
     });
 });
 
+// Logging in the User
 router.post('/login', [
 
   check('username')
@@ -154,6 +153,7 @@ router.post('/login', [
     })
 });
 
+// Logging out the User
 router.post('/logout', (req, res, next) => {
   req.session.destroy((err) => {
     if (err) {
