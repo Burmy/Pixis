@@ -1,4 +1,4 @@
-This is a photo management website that will allow users to post images, search for images and view and comment on individual image posts.
+This is a photo management website that allows users to post images, search for images and view and comment on individual image posts.
 
 # Build/Run Instructions
 
